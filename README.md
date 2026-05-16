@@ -1,111 +1,54 @@
-# Discord Moderation Bot (Node.js)
+<h1 align="center">misuminitt Portfolio Dashboard</h1>
 
-Bot ini fokus untuk moderasi server dan AutoMod yang bisa diatur via slash command.
+<p align="center">
+  <img src="https://img.shields.io/badge/next.js-16-black.svg">
+  <img src="https://img.shields.io/badge/react-19-61DAFB.svg">
+  <img src="https://img.shields.io/badge/typescript-5+-3178C6.svg">
+  <img src="https://img.shields.io/badge/prisma-6-2D3748.svg">
+  <img src="https://img.shields.io/badge/status-active-success.svg">
+</p>
 
-## Fitur Utama
-- AutoMod untuk deteksi pelanggaran chat
-- Auto delete pesan pelanggaran (bisa ON/OFF)
-- Auto warn, auto mute, auto kick berdasarkan jumlah pelanggaran
-- Manual moderation commands (`/warn`, `/mute`, `/ban`, dll)
-- DM otomatis ke user yang kena tindakan moderasi
-- Channel log moderasi + activity log global
+A personal portfolio focused on CTF writeups, certifications, and skills showcase, powered by a custom admin dashboard.
 
-## Rule AutoMod
-Rule yang dideteksi:
-- Pipe spam: `|||` atau `| |` / `| | |`
-- Underscore spam: `_ _` / `_ _ _`
-- Link `https://imgur.com/`
-- Frasa `free skin` (case-insensitive)
-- Banword list (bisa diatur)
-- Mention `@everyone` non-admin
-- Spam gambar melebihi threshold dalam window waktu tertentu
+## About Me
+I am **Muhammad Ridwan Kusumahani**, a cybersecurity enthusiast and CTF player focused on practical writeups, secure engineering, and continuous learning.
 
-## Alur Punishment
-- Pelanggaran akan masuk warning counter user.
-- Jika warning user sudah **3 kali**, user akan **auto-kick**.
-- Setelah auto-kick, warning counter user di-reset ke 0.
-- Riwayat log tetap ada di channel log.
+## Technology Stack
+- `next`
+- `react`
+- `typescript`
+- `prisma`
+- `@prisma/client`
+- `jose`
 
-## Appeal Contact (DM Bot)
-Saat user kena warn/mute/ban/kick, bot kirim DM dan mengarahkan appeal ke:
-- `<@812290843511488582>`
-- `<@328048748120899586>`
+## Requirements
+- Node.js 18+
+- npm
+- SQLite (local Prisma setup)
 
-## Slash Commands
-### Umum
-- `/ping`
-- `/halo`
-- `/help`
-
-### Moderasi Manual
-- `/setmodlog channel:#channel`
-- `/warn user:@user reason:...`
-- `/warnings user:@user`
-- `/removewarn user:@user warn_id:<id>`
-- `/clearwarnings user:@user`
-- `/mute user:@user minutes:... reason:...`
-- `/unmute user:@user`
-- `/ban user:@user reason:...`
-- `/unban userid:1234567890`
-- `/kick user:@user reason:...`
-- `/purge amount:1-100`
-
-### Force Test AutoMod
-- `/automod-forcetest add user:@user`
-- `/automod-forcetest remove user:@user`
-- `/automod-forcetest list`
-
-### Konfigurasi AutoMod (Tanpa Ubah Kode)
-- `/automod-config view`
-- `/automod-config set warn_before_mute:<angka> mute_minutes:<angka> delete_message:<true/false> autoban_enabled:<true/false> autoban_warn_threshold:<angka>`
-- `/automod-config set-banword action:<warn|mute|ban> mute_minutes:<angka>`
-- `/automod-config set-image limit:<angka> window_sec:<angka>`
-- `/automod-config banword-add word:<kata>`
-- `/automod-config banword-remove word:<kata>`
-- `/automod-config banword-list`
-
-## Logging
-### Masuk ke log channel (`/setmodlog`)
-- Warn/mute/ban/kick/unban/purge
-- Message create/edit/delete
-- Channel create/delete/update
-- Role create/delete/update
-- Thread create/delete/update
-- Guild ban add/remove
-
-### Tidak masuk ke log
-- Member join/leave
-- Voice state logs
-- Command usage logs
-
-## Permissions yang Dibutuhkan
-Aktifkan minimal di bot role / OAuth permissions:
-- `View Channels`
-- `Send Messages`
-- `Read Message History`
-- `Manage Messages`
-- `Moderate Members`
-- `Kick Members`
-- `Ban Members`
-
-Di Developer Portal -> Bot:
-- `Message Content Intent` = ON
-
-## Environment Variables
-Contoh `.env`:
-```env
-DISCORD_TOKEN=your_bot_token
-CLIENT_ID=your_application_id
-GUILD_ID=your_server_id
-BANWORDS=anjing,kontol,asu,babi,tai,bangsat
+## Installation
+### 1. Clone repository
+```bash
+git clone https://github.com/misuminitt/misuminitt.github.io.git
+cd misuminitt.github.io
 ```
 
-## Jalankan
+### 2. Install dependencies
 ```bash
 npm install
-npm start
 ```
 
-## Catatan Penting
-- Role bot harus di atas role target untuk mute/kick/ban.
-- Jika token sempat terekspos, segera reset token di Discord Developer Portal.
+### 3. Setup environment
+```bash
+cp .env.example .env
+```
+
+Make sure these values are set in `.env`:
+- `DATABASE_URL`
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD`
+- `JWT_SECRET`
+- `NEXT_PUBLIC_ADMIN_PATH`
+
+## Author
+misuminitt
