@@ -1,0 +1,5 @@
+node_modules/
+.env
+settings.json
+index.js.bak
+.DS_Store
